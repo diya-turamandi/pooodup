@@ -1,34 +1,36 @@
-// function
-function greetUser(name) {
-  alert(`Hey hi,${name} welcome to pooodup`);
-}
+let join = document.querySelector("#idname");
+join.onclick=()=>{
+    let inputname=prompt("enter your name here");
+if(inputname){
+    inputname = inputname.toUpperCase();    
+    let username=document.createElement("p");
+    username.innerText=`Namaste  ${inputname} ,welcome to our website`;
+    username.style.color="blueviolet";
+    username.style.textAlign="right";
+    let userwelcome= document.getElementById("userwelcome");
+    userwelcome.append(username);
+    }}
+    // Get modal elements
+const modal = document.getElementById("loginModal");
+const closeModal = document.getElementById("closeModal");
 
-let userName = prompt("Enter your name:");
-greetUser(userName);
+// You can trigger this from a button or link
 
+const loginTrigger = document.querySelector(".oval-button"); // assuming this link opens the modal
 
-
-const cursor = document.getElementById("customCursor");
-
-// Move cursor with mouse
-document.addEventListener("mousemove", (e) => {
-  let cursorSize = 50; // Adjust this based on your image size
-    let offset = cursorSize / 2;
-    cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
-cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
-
+loginTrigger.addEventListener("click", function(e) {
+  e.preventDefault();
+  modal.style.display = "block";
 });
 
-// Blinking effect every 3 seconds
-// Detect when hovering over buttons or links
-document.querySelectorAll("button, a").forEach((element) => {
-  element.addEventListener("mouseenter", () => {
-    console.log("Hover detected on button or link!");
-      cursor.classList.add("blink"); // Add blink when hovering
-  });
+// Close when ❌ is clicked
+closeModal.addEventListener("click", function() {
+  modal.style.display = "none";
+});
 
-  element.addEventListener("mouseleave", () => {
-    console.log("Mouse left button or link!");
-      cursor.classList.remove("blink"); // Remove blink when leaving
-  });
+// Optional: close when clicking outside modal
+window.addEventListener("click", function(e) {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
 });
